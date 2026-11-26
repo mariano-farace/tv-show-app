@@ -34,5 +34,7 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'tvmaze' => [
+        'base_url' => env('TVMAZE_BASE_URL', 'https://api.tvmaze.com'),
+    ],
 ];
