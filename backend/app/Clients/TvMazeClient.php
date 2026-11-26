@@ -11,6 +11,14 @@ class TvMazeClient
 {
     /**
      * Busca series por nombre y deja solo los campos que usamos.
+     *
+     * @return list<array{
+     *     id: int,
+     *     name: string,
+     *     image: array{medium: string, original: string}|null,
+     *     genres: list<string>,
+     *     rating: array{average: float|null}
+     * }>
      */
     public function searchShows(string $query): array
     {
@@ -41,6 +49,8 @@ class TvMazeClient
 
     /**
      * Pide una serie por id y devuelve el objeto completo de TVMaze.
+     *
+     * @return array<string, mixed>
      */
     public function getShow(int $id): array
     {
@@ -64,10 +74,10 @@ class TvMazeClient
     }
 
     /**
-     * Deja del show solo los datos que necesita la card según el enunciado de la tarea.
+     * Deja del show solo los datos que necesita la card.
      *
-     * Conserva la forma original de image ({medium, original}) y rating ({average})
-     * para que la búsqueda y el detalle devuelvan los mismos tipos.
+     * @param  array<string, mixed>  $show
+     * @return array<string, mixed>
      */
     private function toSummary(array $show): array
     {
