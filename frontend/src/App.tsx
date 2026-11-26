@@ -1,10 +1,15 @@
+import { Navigate, Route, Routes } from "react-router-dom";
+import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
+
 function App() {
   return (
-    <main className="app">
-      <h1>TVMaze</h1>
-      <p>Buscador de series</p>
-    </main>
-  )
+    <Routes>
+      <Route path="/" element={<SearchPage />} />
+      <Route path="/shows/:id" element={<DetailPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
